@@ -19,7 +19,7 @@ function App() {
   const [dataScource, setDataScource] = useState(DATA_SOURCE.LANGUAGE);
 
   useEffect(() => {
-    if (dataScource === DATA_SOURCE.LANGUAGE) {
+    if (dataScource.toString() === DATA_SOURCE.LANGUAGE.toString()) {
       axios
         .get(`${process.env.REACT_APP_SERVER_URL}/languages`)
         .then(({ data }) => {
@@ -29,7 +29,9 @@ function App() {
           );
           setData(trans);
         });
-    } else {
+    }
+
+    if (dataScource.toString() === DATA_SOURCE.LICENSE.toString()) {
       axios
         .get(`${process.env.REACT_APP_SERVER_URL}/licenses`)
         .then(({ data }) => {
